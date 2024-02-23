@@ -2510,6 +2510,12 @@ figcaption a {
     border-bottom: 1px solid var(--color-border);
 }
 
+/* .gh-archive-inner-notinhas {
+    padding-bottom: clamp(40px, 2.73vw + 29.09px, 64px);
+    border-bottom: 1px solid var(--color-border);
+} */
+
+
 .gh-archive.has-image .gh-archive-inner {
     align-items: center;
     grid-column: 1 / -1;
