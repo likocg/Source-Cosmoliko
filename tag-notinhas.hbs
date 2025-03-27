@@ -1,0 +1,51 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+<main class="gh-main gh-outer">
+
+    {{#tag}}
+        <section class="gh-archive{{#if feature_image}} has-image{{/if}}{{#if @custom.show_publication_info_sidebar}} has-sidebar{{/if}} gh-inner">
+            <div class="gh-archive-inner">
+                <header class="gh-archive-wrapper">
+                    <h1 class="gh-article-title is-title">{{name}}</h1>
+                    {{#if description}}
+                        <p class="gh-article-excerpt">{{description}}</p>
+                    {{/if}}
+                </header>
+                {{> "feature-image"}}
+            </div>
+        </section>
+    {{/tag}}
+
+
+    {{#foreach posts}}
+    {{#has tag="notinhas"}}
+
+    <article class="gh-article {{post_class}}">
+        <header class="gh-article-header"> {{{codeinjection_head}}}
+        </header> 
+        <section class="gh-content gh-canvas is-body">
+            
+            <div object-fit: none;>
+                {{> "feature-image-notinhas"}}
+            </div>
+            
+            {{content}}            
+            
+            <div class="gh-article-meta-content">
+                <time class="gh-article-meta-date" datetime="{{date format="YYYY-MM-DD"}}"><a class="u-permalink" href="{{url}}" aria-label="{{title}}">{{date}}</a></time>
+            </div>
+
+{{!-- linha de separação entre posts --}}
+<div style="padding-bottom: clamp(40px, 2.73vw + 29.09px, 64px); border-bottom: 1px solid var(--color-border);"></div>
+
+            {{!-- <div class="gh-archive-inner-notinhas"></div> --}}
+
+        </section>
+    </article>
+
+    {{/has}}
+    {{/foreach}}
+
+
+</main>
