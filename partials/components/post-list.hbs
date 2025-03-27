@@ -23,16 +23,26 @@
                     {{#match @custom.header_style "Highlight"}}
                         {{#if @custom.show_featured_posts}}
                             {{#match posts.length ">=" 4}}
+<<<<<<< HEAD
                                 {{#get "posts" include="authors" limit="16"}}
                                     {{#foreach posts from="5"}}
+=======
+                                {{#get "posts" filter="tag:-notinhas" include="authors" limit="16"}}
+                                    {{#foreach posts from="5" limit="12"}}
+>>>>>>> 188793985c6b71f2de7e249a834a711c2c7c12b3
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
                                 {{/get}}
                             {{/match}}
                         {{else}}
                             {{#match posts.length ">=" 10}}
+<<<<<<< HEAD
                                 {{#get "posts" include="authors" limit="22"}}
                                     {{#foreach posts from="11"}}
+=======
+                                {{#get "posts" filter="tag:-notinhas" include="authors" limit="22"}}
+                                    {{#foreach posts from="11" limit="12"}}
+>>>>>>> 188793985c6b71f2de7e249a834a711c2c7c12b3
                                         {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
                                 {{/get}}
@@ -40,14 +50,19 @@
                         {{/if}}
                     {{else match @custom.header_style "Magazine"}}
                         {{#match posts.length ">=" 7}}
+<<<<<<< HEAD
                             {{#get "posts" include="authors" limit="19"}}
                                 {{#foreach posts from="8"}}
+=======
+                            {{#get "posts" filter="tag:-notinhas" include="authors" limit="19"}}
+                                {{#foreach posts from="8" limit="12"}}
+>>>>>>> 188793985c6b71f2de7e249a834a711c2c7c12b3
                                     {{> "post-card" lazyLoad=true}}
                                 {{/foreach}}
                             {{/get}}
                         {{/match}}
                     {{else}}
-                        {{#get "posts" include="authors" limit="12"}}
+                        {{#get "posts" filter="tag:-notinhas" include="authors" limit="12"}}
                             {{#foreach posts}}
                                 {{> "post-card" lazyLoad=true}}
                             {{/foreach}}
@@ -58,14 +73,16 @@
                 {{!-- All posts --}}
                 {{#match feed "index"}}
                     {{#match pagination.page 2}}
-                        {{#get "posts" include="authors" limit=@config.posts_per_page as |recent|}}
+                        {{#get "posts" filter="tag:-notinhas" include="authors" limit=@config.posts_per_page as |recent|}}
                             {{#foreach recent}}
                                 {{> "post-card"}}
                             {{/foreach}}
                         {{/get}}
                     {{/match}}
                     {{#foreach posts}}
+                                        {{^has tag="notinhas"}}
                         {{> "post-card" lazyLoad=true}}
+                                        {{/has}}
                     {{/foreach}}
                 {{/match}}
 

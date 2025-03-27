@@ -1,0 +1,120 @@
+{{!< default}}
+
+<main class="gh-main gh-outer">
+
+{{!-- CONTEUDO DA PAGINA --}}
+    {{#post}}
+
+    TESTEEE
+    
+        {{!-- {{> "content" width="wide"}} --}}
+    {{/post}}
+
+
+
+
+{{!-- DIV CSS  --}}
+    <div class="gh-archive">
+
+
+
+
+
+<section class="post-feed">
+  {{#foreach posts}}
+    {{> "post-card"}}
+  {{/foreach}}
+</section>
+
+
+
+
+
+
+{{!-- GET POSTS E DATA --}}
+{{#get 'posts' limit='all' include="tags" order='published_at desc' filter="tags:-notinhas"}}
+    {{#foreach posts visibility='all'}}
+
+{{!-- ARTIGO / LOOPS --}}
+
+    <article class='feed'>
+
+{{!-- FEED WRAPPER --}}
+<div class="feed-arquivo-container">
+
+
+{{!-- DATA --}}
+                <div class="gh-archive-wrapper">
+            {{date published_at format="DD MMM YY"}}
+                </div>
+
+{{!-- TÍTULO --}}
+
+        <div class="gh-article-title is-title">
+
+          <h2>{{title}}</h2>
+
+        {{!-- EXCERTO --}}
+        {{#if excerpt}}
+            <div>{{excerpt words="30"}}</div>
+        {{/if}}
+
+        </div>
+
+
+
+
+
+          
+          {{!-- feed right --}}
+        <div class="feed-reading-tags-arquivo">
+
+
+        {{!-- reading time --}}
+        {{#if reading_time}}
+        <div class="-">
+            {{reading_time}}
+        </div>
+        {{/if}}
+
+        {{!-- SITE COMMENTS --}}
+        {{#if @site.comments_enabled}}
+            {{comment_count autowrap="div" class="feed-comments"}}
+        {{/if}}
+
+
+
+        {{!-- TAGS --}}
+        {{#if tags}}
+        <div class="feed-tags-arquivo">
+        {{tags limit="1"}}
+        </div>
+        {{/if}}
+
+
+        </div>
+
+
+
+        {{!-- </div> --}}
+
+
+</div>
+
+</a>
+
+
+
+
+
+    <a class="u-permalink" href="{{url}}" aria-label="{{title}}"></a>
+
+  </article>
+
+    {{/foreach}}
+{{/get}}
+
+
+    </div>
+</main>
+
